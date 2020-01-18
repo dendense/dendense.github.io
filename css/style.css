@@ -3,6 +3,9 @@
     margin: 0;
     font-family: CODE;
 }
+.inRed {
+    color: #ff3333;
+}
 .container-fluid {
     padding: 0;
 }
