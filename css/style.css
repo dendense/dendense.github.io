@@ -2,7 +2,10 @@
     padding: 0;
     margin: 0;
 }
-header{
+p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+header {
     font-family: CODE;
     letter-spacing: 2px;
 }
