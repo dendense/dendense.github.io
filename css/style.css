@@ -1,11 +1,12 @@
 * {
     padding: 0;
     margin: 0;
+}
+header{
     font-family: CODE;
+    letter-spacing: 2px;
 }
-.inRed {
-    color: #ff3333;
-}
+
 .container-fluid {
     padding: 0;
 }
