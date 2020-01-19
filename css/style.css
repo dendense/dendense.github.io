@@ -1,24 +1,47 @@
-* {
-    padding: 0;
-    margin: 0;
-}
-p {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-header {
-    font-family: CODE;
-    letter-spacing: 2px;
+body {
+    font-family: 'Poppins', sans-serif;
 }
 
-.profile-home {
-    padding-top: 1rem;
+footer {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 
-.container-fluid {
-    padding: 0;
+footer p {
+    margin-bottom: .25rem;
+}
+
+.jumbotron {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin-bottom: 0;
+    background-color: #fff;
+}
+
+.jumbotron p:last-child {
+    margin-bottom: 0;
+}
+
+.jumbotron .container {
+    max-width: 30rem;
+}
+
+.album {
+    border: 1px;
+}
+
+a:hover {
+    text-decoration: none
 }
 
 @font-face {
     font-family: CODE;
     src: url(../assets/font/CODE.otf);
 }
+
+@media (min-width: 768px) {
+    .jumbotron {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
