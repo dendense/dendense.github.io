@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.ibb.co/6ysJjTq/banner.png"></p>
+<p align="center"><img src="/assets/img/banner.png"></p>
 
 ## What is This?
 

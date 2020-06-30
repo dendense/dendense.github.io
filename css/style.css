@@ -11,6 +11,10 @@ footer p {
     margin-bottom: .25rem;
 }
 
+div ul li:hover a {
+    color : #2c9fd4;
+}
+
 .jumbotron {
     padding-top: 3rem;
     padding-bottom: 3rem;
