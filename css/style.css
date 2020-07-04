@@ -12,7 +12,7 @@ footer p {
 }
 
 div ul li:hover a {
-    color : #2c9fd4;
+    color: #2c9fd4;
 }
 
 .jumbotron {
@@ -45,7 +45,7 @@ a:hover {
 
 @media (min-width: 768px) {
     .jumbotron {
-      padding-top: 6rem;
-      padding-bottom: 6rem;
+        padding-top: 6rem;
+        padding-bottom: 6rem;
     }
-  }
+}
