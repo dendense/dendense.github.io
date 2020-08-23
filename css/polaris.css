@@ -1,0 +1,19 @@
+/*Polaris CSS*/
+
+.right-polaris {
+    color: #fff;
+}
+
+.wrapper-polaris {
+    height: 200px;
+    width: 700px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.img-proper {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+}
