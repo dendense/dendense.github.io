@@ -1,118 +1,447 @@
 <!DOCTYPE html>
-<html lang="en">
-  <!--
-        # Author     : DENDENSE
-        # Email      : denyfarras@gmail.com
-        # LICENSE    : MIT (https://github.com/dendense/dendense.github.io/blob/master/LICENSE)
-  -->
+<html lang="en" data-mode="dark">
+<head>
+<meta charset="UTF-8">
+<title>Trade Journal</title>
+<style>
+  :root{
+    --bg:#0B0E11; --panel:#11151A; --panel2:#161B22; --border:#232A33;
+    --text:#E7E9EA; --text-sec:#8B94A0; --text-mute:#5B6470;
+    --gold:#D4AF37; --green:#22C55E; --red:#EF4444; --mono:'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;padding:24px 20px 60px;}
+  h1,h2,h3{font-weight:500;margin:0;}
+  .top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:8px;}
+  .top h1{font-size:20px;letter-spacing:0.3px;}
+  .top .sub{font-size:12px;color:var(--text-mute);font-family:var(--mono);}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:18px;}
+  .stat{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .stat .l{font-size:11px;color:var(--text-mute);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;}
+  .stat .v{font-size:20px;font-family:var(--mono);font-weight:500;}
+  .pos{color:var(--green);} .neg{color:var(--red);} .gold{color:var(--gold);}
+  .gauges{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px;}
+  .gauge{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px;}
+  .gauge .gl{display:flex;justify-content:space-between;font-size:11px;color:var(--text-mute);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px;}
+  .gauge .gv{font-size:12px;color:var(--text-sec);font-family:var(--mono);margin-bottom:6px;}
+  .bar{height:8px;border-radius:4px;background:#1D232B;overflow:hidden;}
+  .bar-fill{height:100%;border-radius:4px;transition:width .3s;}
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:16px;}
+  .panel h3{font-size:13px;color:var(--text-sec);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px;}
+  form{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;}
+  input,select{background:#0E1217;border:1px solid var(--border);color:var(--text);border-radius:6px;padding:8px 10px;font-size:13px;font-family:'Inter',sans-serif;height:36px;}
+  input:focus,select:focus{outline:none;border-color:var(--gold);}
+  button{background:var(--gold);color:#1a1408;border:none;border-radius:6px;padding:8px 16px;font-size:13px;font-weight:500;cursor:pointer;height:36px;}
+  button:hover{opacity:0.9;}
+  button.secondary{background:transparent;border:1px solid var(--border);color:var(--text-sec);}
+  table{width:100%;border-collapse:collapse;font-size:12px;font-family:var(--mono);}
+  th{text-align:left;color:var(--text-mute);font-weight:400;text-transform:uppercase;font-size:10px;letter-spacing:0.5px;padding:6px 8px;border-bottom:1px solid var(--border);}
+  td{padding:7px 8px;border-bottom:1px solid #171C22;color:var(--text-sec);}
+  tr:last-child td{border-bottom:none;}
+  .empty{color:var(--text-mute);font-size:13px;padding:20px 0;text-align:center;}
+  .del{cursor:pointer;color:var(--text-mute);font-size:14px;}
+  .del:hover{color:var(--red);}
+  .calHead{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+  .calHead .label{font-size:13px;font-family:var(--mono);color:var(--text-sec);}
+  .calHead button{padding:4px 10px;height:28px;font-size:12px;}
+  .calGrid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;}
+  .calDow{font-size:10px;color:var(--text-mute);text-align:center;text-transform:uppercase;letter-spacing:0.5px;padding-bottom:4px;}
+  .calCell{aspect-ratio:1;border-radius:6px;border:1px solid var(--border);padding:5px 6px;display:flex;flex-direction:column;justify-content:space-between;font-family:var(--mono);}
+  .calCell.empty{border:none;}
+  .calCell .d{font-size:10px;color:var(--text-mute);}
+  .calCell .p{font-size:11px;font-weight:500;}
+  .calLegend{display:flex;gap:14px;margin-top:10px;font-size:11px;color:var(--text-mute);align-items:center;}
+  .calLegend .sw{width:10px;height:10px;border-radius:2px;display:inline-block;margin-right:4px;vertical-align:-1px;}
+</style>
+</head>
+<body>
 
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-      rel="stylesheet"
-      href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
-    />
-    <title>DENDENSE</title>
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
+<div class="top">
+  <h1>Deny's trade journal <span class="gold">·</span> GFT $5000</h1>
+  <div class="sub" id="today"></div>
+</div>
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-  </head>
+<div class="stats">
+  <div class="stat"><div class="l">Balance</div><div class="v" id="stBalance">$5,000.00</div></div>
+  <div class="stat"><div class="l">Total PnL</div><div class="v" id="stPnl">$0.00</div></div>
+  <div class="stat"><div class="l">Win rate</div><div class="v" id="stWinRate">—</div></div>
+  <div class="stat"><div class="l">Trades</div><div class="v" id="stCount">0</div></div>
+</div>
 
-  <body>
-    <!--INI NAVBAR CONTENT-->
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a href="/" class="navbar-brand"
-            ><i class="fas fa-adjust"></i> DENDENSE</a
-          >
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a href="/" class="nav-link active">Home</a>
-              </li>
-              <li class="nav-item">
-                <a href="/pages/project.html" class="nav-link">Project</a>
-              </li>
-              <li class="nav-item">
-                <a href="/pages/members.html" class="nav-link">Members</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <!--INI NAVBAR CONTENT-->
-    <section class="jumbotron jumbotron-fluid text-center">
-      <div class="container">
-        <img src="https://img.icons8.com/dusk/64/000000/archive-folder.png" />
-        <h1 class="display-4">CINEMICHI</h1>
-        <p class="lead text-muted">
-          Whole project will be posted on this page. All posts are directly go
-          to our GitHub Repository. Enjoy!
-        </p>
-      </div>
-    </section>
-    <!--INI ISI KONTEN-->
-    <footer class="text-center">
-      <div class="container">
-        <a href="/pages/project.html" class="btn btn-primary btn-md"
-          >Go to The Project</a
-        >
-      </div>
-    </footer>
-    <!--INI FOOTER-->
-  </body>
-  <script
-    src="https://kit.fontawesome.com/99eb5a2d14.js"
-    crossorigin="anonymous"
-  ></script>
-  <script
-    src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"
-  ></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-    crossorigin="anonymous"
-  ></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-    crossorigin="anonymous"
-  ></script>
+<div class="gauges">
+  <div class="gauge">
+    <div class="gl"><span>Daily drawdown</span><span id="ddDayVal"></span></div>
+    <div class="gv" id="ddDayText">$0 / $250 used</div>
+    <div class="bar"><div class="bar-fill" id="ddDayBar" style="width:0%;background:var(--green);"></div></div>
+  </div>
+  <div class="gauge">
+    <div class="gl"><span>Max drawdown</span><span id="ddMaxVal"></span></div>
+    <div class="gv" id="ddMaxText">$0 / $500 used</div>
+    <div class="bar"><div class="bar-fill" id="ddMaxBar" style="width:0%;background:var(--green);"></div></div>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Equity curve</h3>
+  <div style="position:relative;height:220px;">
+    <svg id="equityChart" role="img" aria-label="Line chart of account balance over trades" viewBox="0 0 640 220" style="width:100%;height:100%;overflow:visible;"></svg>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="calHead">
+    <h3 style="margin:0;">Calendar PnL</h3>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <button class="secondary" id="calPrev">&larr;</button>
+      <span class="label" id="calLabel"></span>
+      <button class="secondary" id="calNext">&rarr;</button>
+    </div>
+  </div>
+  <div class="calGrid" id="calGrid"></div>
+  <div class="calLegend">
+    <span><span class="sw" style="background:var(--green);"></span>Profit day</span>
+    <span><span class="sw" style="background:var(--red);"></span>Loss day</span>
+    <span><span class="sw" style="background:#1D232B;border:1px solid var(--border);"></span>No trades</span>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>PnL per trade</h3>
+  <div style="position:relative;height:180px;">
+    <svg id="pnlChart" role="img" aria-label="Bar chart of profit and loss per trade" viewBox="0 0 640 180" style="width:100%;height:100%;overflow:visible;"></svg>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Log a trade</h3>
+  <form id="tradeForm">
+    <input type="date" id="fDate">
+    <select id="fAsset">
+      <option value="">Asset</option>
+      <option>XAUUSD</option><option>NASDAQ</option><option>US500</option><option>HYPEUSDT</option>
+    </select>
+    <select id="fSession">
+      <option value="">Session</option>
+      <option>Asia</option><option>London</option><option>New York</option>
+    </select>
+    <select id="fDirection">
+      <option value="">Direction</option>
+      <option>Long</option><option>Short</option>
+    </select>
+    <input type="text" id="fSetup" placeholder="Setup (e.g. CHoCH+FVG)">
+    <input type="text" id="fLot" placeholder="Lot size">
+    <select id="fResult">
+      <option value="">Result</option>
+      <option>Win</option><option>Loss</option><option>Breakeven</option>
+    </select>
+    <input type="number" step="0.01" id="fPnl" placeholder="PnL ($, use - for loss)">
+    <button type="submit">Add trade</button>
+  </form>
+  <div id="formMsg" style="font-size:12px;color:var(--red);margin-top:8px;"></div>
+  <div style="display:flex;gap:8px;margin-top:12px;border-top:1px solid var(--border);padding-top:12px;">
+    <button type="button" class="secondary" id="exportBtn">Export JSON</button>
+    <button type="button" class="secondary" id="importBtn">Import JSON</button>
+    <input type="file" id="importFile" accept="application/json" style="display:none;">
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Journal</h3>
+  <div id="tableWrap"><div class="empty">No trades logged yet.</div></div>
+</div>
+
+<script>
+const STARTING_BALANCE = 5000;
+const DAILY_DD_LIMIT = 250;
+const MAX_DD_LIMIT = 500;
+let trades = [];
+const now = new Date();
+let calYear = now.getFullYear();
+let calMonth = now.getMonth();
+
+function renderCalendar(){
+  const label = new Date(calYear, calMonth, 1).toLocaleDateString('en-US',{month:'long', year:'numeric'});
+  document.getElementById('calLabel').textContent = label;
+
+  const dailyPnl = {};
+  trades.forEach(t=>{ dailyPnl[t.date] = (dailyPnl[t.date]||0) + t.pnl; });
+
+  const firstDow = new Date(calYear, calMonth, 1).getDay();
+  const daysInMonth = new Date(calYear, calMonth+1, 0).getDate();
+  const grid = document.getElementById('calGrid');
+  let html = '';
+  ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(d=>{ html += '<div class="calDow">'+d+'</div>'; });
+  for(let i=0;i<firstDow;i++){ html += '<div class="calCell empty"></div>'; }
+  for(let d=1; d<=daysInMonth; d++){
+    const dateStr = calYear+'-'+String(calMonth+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+    const pnl = dailyPnl[dateStr];
+    let bg = '#161B22', border = 'var(--border)', txt = '';
+    if(pnl !== undefined){
+      if(pnl > 0){ bg = 'rgba(34,197,94,0.15)'; border = 'rgba(34,197,94,0.4)'; txt = '<div class="p pos">'+fmt(pnl)+'</div>'; }
+      else if(pnl < 0){ bg = 'rgba(239,68,68,0.15)'; border = 'rgba(239,68,68,0.4)'; txt = '<div class="p neg">'+fmt(pnl)+'</div>'; }
+      else { txt = '<div class="p">'+fmt(pnl)+'</div>'; }
+    }
+    html += '<div class="calCell" style="background:'+bg+';border-color:'+border+';"><div class="d">'+d+'</div>'+txt+'</div>';
+  }
+  grid.innerHTML = html;
+}
+
+document.getElementById('calPrev').addEventListener('click', ()=>{
+  calMonth--; if(calMonth<0){ calMonth=11; calYear--; }
+  renderCalendar();
+});
+document.getElementById('calNext').addEventListener('click', ()=>{
+  calMonth++; if(calMonth>11){ calMonth=0; calYear++; }
+  renderCalendar();
+});
+
+document.getElementById('today').textContent = new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+document.getElementById('fDate').value = new Date().toISOString().slice(0,10);
+
+async function loadTrades(){
+  try{
+    const raw = localStorage.getItem('gft_trade_journal');
+    trades = raw ? JSON.parse(raw) : [];
+  }catch(e){ trades = []; }
+  render();
+}
+
+async function saveTrades(){
+  try{ localStorage.setItem('gft_trade_journal', JSON.stringify(trades)); }
+  catch(e){ console.error('save failed', e); }
+}
+
+function fmt(n){
+  const v = Math.round(n*100)/100;
+  const sign = v < 0 ? '-' : '';
+  return sign + '$' + Math.abs(v).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+}
+
+function computeBalances(){
+  let bal = STARTING_BALANCE;
+  return trades.map(t=>{ bal += t.pnl; return {...t, balanceAfter: bal}; });
+}
+
+function render(){
+  const withBal = computeBalances();
+  const finalBalance = withBal.length ? withBal[withBal.length-1].balanceAfter : STARTING_BALANCE;
+  const totalPnl = finalBalance - STARTING_BALANCE;
+  const wins = trades.filter(t=>t.result==='Win').length;
+  const decided = trades.filter(t=>t.result==='Win'||t.result==='Loss').length;
+  const winRate = decided ? Math.round((wins/decided)*100) : null;
+
+  document.getElementById('stBalance').textContent = fmt(finalBalance);
+  document.getElementById('stPnl').innerHTML = totalPnl>=0 ? '<span class="pos">'+fmt(totalPnl)+'</span>' : '<span class="neg">'+fmt(totalPnl)+'</span>';
+  document.getElementById('stWinRate').textContent = winRate===null ? '—' : winRate+'%';
+  document.getElementById('stCount').textContent = trades.length;
+
+  // daily DD: today's pnl
+  const todayStr = new Date().toISOString().slice(0,10);
+  const todayPnl = trades.filter(t=>t.date===todayStr).reduce((s,t)=>s+t.pnl,0);
+  const dailyLoss = Math.max(0, -todayPnl);
+  const dailyPct = Math.min(100, (dailyLoss/DAILY_DD_LIMIT)*100);
+  document.getElementById('ddDayText').textContent = fmt(dailyLoss)+' / '+fmt(DAILY_DD_LIMIT)+' used';
+  document.getElementById('ddDayVal').textContent = Math.round(dailyPct)+'%';
+  const ddDayBar = document.getElementById('ddDayBar');
+  ddDayBar.style.width = dailyPct+'%';
+  ddDayBar.style.background = dailyPct>80 ? 'var(--red)' : dailyPct>50 ? '#EDA100' : 'var(--green)';
+
+  // max DD: worst drop from starting balance (static floor at 4500)
+  let peak = STARTING_BALANCE;
+  let maxDrop = 0;
+  withBal.forEach(t=>{ if(t.balanceAfter>peak) peak=t.balanceAfter; const drop = STARTING_BALANCE - t.balanceAfter; if(drop>maxDrop) maxDrop=drop; });
+  maxDrop = Math.max(0, maxDrop);
+  const maxPct = Math.min(100, (maxDrop/MAX_DD_LIMIT)*100);
+  document.getElementById('ddMaxText').textContent = fmt(maxDrop)+' / '+fmt(MAX_DD_LIMIT)+' used';
+  document.getElementById('ddMaxVal').textContent = Math.round(maxPct)+'%';
+  const ddMaxBar = document.getElementById('ddMaxBar');
+  ddMaxBar.style.width = maxPct+'%';
+  ddMaxBar.style.background = maxPct>80 ? 'var(--red)' : maxPct>50 ? '#EDA100' : 'var(--green)';
+
+  renderTable(withBal);
+  renderCharts(withBal);
+  renderCalendar();
+}
+
+function renderTable(withBal){
+  const wrap = document.getElementById('tableWrap');
+  if(!withBal.length){ wrap.innerHTML = '<div class="empty">No trades logged yet.</div>'; return; }
+  let html = '<table><thead><tr><th>Date</th><th>Asset</th><th>Session</th><th>Dir</th><th>Setup</th><th>Lot</th><th>Result</th><th>PnL</th><th>Balance</th><th></th></tr></thead><tbody>';
+  withBal.forEach((t,i)=>{
+    const pnlClass = t.pnl>0?'pos':(t.pnl<0?'neg':'');
+    html += '<tr><td>'+t.date+'</td><td>'+t.asset+'</td><td>'+t.session+'</td><td>'+t.direction+'</td><td>'+(t.setup||'—')+'</td><td>'+(t.lot||'—')+'</td><td>'+t.result+'</td><td class="'+pnlClass+'">'+fmt(t.pnl)+'</td><td>'+fmt(t.balanceAfter)+'</td><td><span class="del" data-i="'+i+'" title="Delete">&times;</span></td></tr>';
+  });
+  html += '</tbody></table>';
+  wrap.innerHTML = html;
+  wrap.querySelectorAll('.del').forEach(el=>{
+    el.addEventListener('click', async (e)=>{
+      const idx = parseInt(e.target.getAttribute('data-i'));
+      trades.splice(idx,1);
+      await saveTrades();
+      render();
+    });
+  });
+}
+
+function renderCharts(withBal){
+  renderEquitySvg(withBal);
+  renderPnlSvg(withBal);
+}
+
+function renderEquitySvg(withBal){
+  const svg = document.getElementById('equityChart');
+  const W = 640, H = 220, padL = 55, padR = 15, padT = 15, padB = 25;
+  const balances = [STARTING_BALANCE, ...withBal.map(t=>t.balanceAfter)];
+  if(balances.length < 2){
+    svg.innerHTML = '<text x="'+W/2+'" y="'+H/2+'" text-anchor="middle" fill="#5B6470" font-size="12">No trades yet</text>';
+    return;
+  }
+  const min = Math.min(...balances), max = Math.max(...balances);
+  const range = (max - min) || 1;
+  const yMin = min - range*0.1, yMax = max + range*0.1;
+  const stepX = (W - padL - padR) / (balances.length - 1);
+  const xAt = i => padL + i*stepX;
+  const yAt = v => padT + (H - padT - padB) * (1 - (v - yMin)/(yMax - yMin));
+
+  let gridLines = '';
+  for(let g=0; g<=4; g++){
+    const gy = padT + (H-padT-padB)*g/4;
+    const val = yMax - (yMax-yMin)*g/4;
+    gridLines += '<line x1="'+padL+'" y1="'+gy+'" x2="'+(W-padR)+'" y2="'+gy+'" stroke="#1D232B" stroke-width="1"/>';
+    gridLines += '<text x="'+(padL-8)+'" y="'+(gy+4)+'" text-anchor="end" font-size="10" fill="#8B94A0" font-family="monospace">'+fmt(val)+'</text>';
+  }
+
+  let points = balances.map((v,i)=>xAt(i)+','+yAt(v)).join(' ');
+  let areaPoints = points + ' ' + xAt(balances.length-1)+','+(H-padB) + ' ' + xAt(0)+','+(H-padB);
+
+  let dots = balances.map((v,i)=>'<circle cx="'+xAt(i)+'" cy="'+yAt(v)+'" r="3" fill="#D4AF37"><title>'+fmt(v)+'</title></circle>').join('');
+
+  svg.innerHTML = gridLines +
+    '<polygon points="'+areaPoints+'" fill="rgba(212,175,55,0.08)"/>' +
+    '<polyline points="'+points+'" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>' +
+    dots;
+}
+
+function renderPnlSvg(withBal){
+  const svg = document.getElementById('pnlChart');
+  const W = 640, H = 180, padL = 55, padR = 15, padT = 15, padB = 25;
+  if(!withBal.length){
+    svg.innerHTML = '<text x="'+W/2+'" y="'+H/2+'" text-anchor="middle" fill="#5B6470" font-size="12">No trades yet</text>';
+    return;
+  }
+  const vals = withBal.map(t=>t.pnl);
+  const maxAbs = Math.max(...vals.map(Math.abs), 1) * 1.15;
+  const zeroY = padT + (H - padT - padB) * (maxAbs / (2*maxAbs));
+  const n = vals.length;
+  const slotW = (W - padL - padR) / n;
+  const barW = Math.min(28, slotW * 0.6);
+
+  let gridLines = '<line x1="'+padL+'" y1="'+zeroY+'" x2="'+(W-padR)+'" y2="'+zeroY+'" stroke="#232A33" stroke-width="1"/>';
+  [1, 0.5, -0.5, -1].forEach(f=>{
+    const val = maxAbs * f;
+    const gy = padT + (H-padT-padB) * (maxAbs - val) / (2*maxAbs);
+    gridLines += '<line x1="'+padL+'" y1="'+gy+'" x2="'+(W-padR)+'" y2="'+gy+'" stroke="#1D232B" stroke-width="1"/>';
+    gridLines += '<text x="'+(padL-8)+'" y="'+(gy+4)+'" text-anchor="end" font-size="10" fill="#8B94A0" font-family="monospace">'+fmt(val)+'</text>';
+  });
+
+  let bars = '';
+  vals.forEach((v,i)=>{
+    const cx = padL + slotW*i + slotW/2;
+    const barH = Math.abs(v) / maxAbs * (H-padT-padB)/2;
+    const y = v >= 0 ? zeroY - barH : zeroY;
+    const color = v >= 0 ? '#22C55E' : '#EF4444';
+    bars += '<rect x="'+(cx-barW/2)+'" y="'+y+'" width="'+barW+'" height="'+Math.max(barH,1)+'" fill="'+color+'" rx="3"><title>'+fmt(v)+'</title></rect>';
+  });
+
+  svg.innerHTML = gridLines + bars;
+}
+
+document.getElementById('tradeForm').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const msg = document.getElementById('formMsg');
+  msg.textContent = '';
+
+  const date = document.getElementById('fDate').value;
+  const asset = document.getElementById('fAsset').value;
+  const session = document.getElementById('fSession').value;
+  const direction = document.getElementById('fDirection').value;
+  const setup = document.getElementById('fSetup').value;
+  const lot = document.getElementById('fLot').value;
+  const result = document.getElementById('fResult').value;
+  const pnlRaw = document.getElementById('fPnl').value;
+
+  const missing = [];
+  if(!date) missing.push('Date');
+  if(!asset) missing.push('Asset');
+  if(!session) missing.push('Session');
+  if(!direction) missing.push('Direction');
+  if(!result) missing.push('Result');
+  if(pnlRaw === '' || isNaN(parseFloat(pnlRaw))) missing.push('PnL');
+
+  if(missing.length){
+    msg.textContent = 'Missing or invalid: ' + missing.join(', ');
+    return;
+  }
+
+  const t = { date, asset, session, direction, setup, lot, result, pnl: parseFloat(pnlRaw) };
+  trades.push(t);
+
+  let saved = true;
+  try{
+    localStorage.setItem('gft_trade_journal', JSON.stringify(trades));
+  }catch(err){
+    saved = false;
+  }
+
+  e.target.reset();
+  document.getElementById('fDate').value = new Date().toISOString().slice(0,10);
+  render();
+
+  msg.style.color = saved ? 'var(--green)' : 'var(--gold)';
+  msg.textContent = saved ? 'Trade added and saved.' : 'Trade added, but auto-save failed (your browser may be blocking local storage).';
+});
+
+loadTrades();
+
+document.getElementById('exportBtn').addEventListener('click', ()=>{
+  const blob = new Blob([JSON.stringify(trades, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'trade_journal_backup_' + new Date().toISOString().slice(0,10) + '.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+
+document.getElementById('importBtn').addEventListener('click', ()=>{
+  document.getElementById('importFile').click();
+});
+
+document.getElementById('importFile').addEventListener('change', (e)=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = async (evt)=>{
+    try{
+      const imported = JSON.parse(evt.target.result);
+      if(!Array.isArray(imported)) throw new Error('Invalid format');
+      trades = imported;
+      await saveTrades();
+      render();
+      const msg = document.getElementById('formMsg');
+      msg.style.color = 'var(--green)';
+      msg.textContent = 'Imported ' + imported.length + ' trades.';
+    }catch(err){
+      const msg = document.getElementById('formMsg');
+      msg.style.color = 'var(--red)';
+      msg.textContent = 'Import failed: file is not a valid trade journal export.';
+    }
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+});
+</script>
+</body>
 </html>
