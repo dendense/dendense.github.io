@@ -154,6 +154,7 @@
 const STARTING_BALANCE = 5000;
 const DAILY_DD_LIMIT = 250;
 const MAX_DD_LIMIT = 500;
+const EDIT_PASSWORD = "NakamuraReno48!";
 let trades = [];
 const now = new Date();
 let calYear = now.getFullYear();
@@ -209,6 +210,17 @@ async function loadTrades(){
 async function saveTrades(){
   try{ localStorage.setItem('gft_trade_journal', JSON.stringify(trades)); }
   catch(e){ console.error('save failed', e); }
+}
+
+function checkEditAccess(){
+  if(sessionStorage.getItem('journal_unlocked') === 'yes') return true;
+  const input = prompt('Enter password to edit the journal:');
+  if(input === EDIT_PASSWORD){
+    sessionStorage.setItem('journal_unlocked', 'yes');
+    return true;
+  }
+  if(input !== null) alert('Incorrect password.');
+  return false;
 }
 
 function fmt(n){
@@ -275,6 +287,7 @@ function renderTable(withBal){
   wrap.innerHTML = html;
   wrap.querySelectorAll('.del').forEach(el=>{
     el.addEventListener('click', async (e)=>{
+      if(!checkEditAccess()) return;
       const idx = parseInt(e.target.getAttribute('data-i'));
       trades.splice(idx,1);
       await saveTrades();
@@ -361,6 +374,8 @@ document.getElementById('tradeForm').addEventListener('submit', async (e)=>{
   const msg = document.getElementById('formMsg');
   msg.textContent = '';
 
+  if(!checkEditAccess()) return;
+
   const date = document.getElementById('fDate').value;
   const asset = document.getElementById('fAsset').value;
   const session = document.getElementById('fSession').value;
@@ -416,6 +431,7 @@ document.getElementById('exportBtn').addEventListener('click', ()=>{
 });
 
 document.getElementById('importBtn').addEventListener('click', ()=>{
+  if(!checkEditAccess()) return;
   document.getElementById('importFile').click();
 });
 
