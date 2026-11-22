@@ -124,7 +124,7 @@ function TopBar({ service }: { service: Service }) {
 function ServiceRail({ active, onPick }: { active: Service; onPick: (s: Service) => void }) {
   const { t } = useLang()
   return (
-    <div className="hidden lg:block">
+    <div className="hidden xl:block">
       <div role="tablist" aria-label={t.servicesTitle} aria-orientation="vertical" className="flex flex-col items-center gap-3 rounded-full bg-white p-2 shadow-panel">
         {SERVICES.map((s) => {
           const on = s.id === active.id
@@ -449,11 +449,11 @@ function Page() {
         <div className="mx-auto max-w-[1560px] rounded-[36px] bg-surface p-4 shadow-[0_30px_80px_-40px_rgb(23_23_26/0.35)] sm:p-6 lg:p-8 xl:p-10">
           <TopBar service={service} />
 
-          <div className="mt-8 grid grid-cols-1 gap-5 lg:mt-10 lg:grid-cols-[56px_minmax(0,0.95fr)_minmax(0,1.05fr)_minmax(300px,0.85fr)] lg:gap-6">
+          <div className="mt-8 grid grid-cols-1 gap-5 lg:mt-10 md:grid-cols-2 lg:gap-6 xl:grid-cols-[56px_minmax(0,0.95fr)_minmax(0,1.05fr)_minmax(300px,0.85fr)]">
             <ServiceRail active={service} onPick={pick} />
             <HeroCopy service={service} />
             <Stage service={service} index={index} onStep={step} />
-            <div id="services" className="flex flex-col gap-5 lg:gap-6">
+            <div id="services" className="flex flex-col gap-5 md:col-span-2 md:grid md:grid-cols-2 lg:gap-6 xl:col-span-1 xl:flex">
               <ServicesPanel active={service} onPick={pick} />
               <DataPromo onPick={() => setIndex(SERVICES.findIndex((s) => s.id === "data"))} />
             </div>

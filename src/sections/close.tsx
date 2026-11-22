@@ -101,8 +101,8 @@ export function BookingSection({ service, onPick }: { service: Service; onPick: 
         </div>
 
         {/* the booking ticket */}
-        <div className="self-start rounded-[28px] bg-foreground text-white shadow-raised lg:mt-2">
-          <div className="p-6 sm:p-7">
+        <div className="self-start text-white drop-shadow-[0_18px_28px_rgb(23_23_26/0.28)] lg:mt-2">
+          <div className="dl-ticket-top rounded-t-[28px] bg-foreground p-6 sm:p-7">
             <p className="text-[13px] font-semibold text-white/60">{b.summary}</p>
             <dl className="mt-4 grid gap-3 text-[14.5px]">
               <div className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
@@ -119,11 +119,8 @@ export function BookingSection({ service, onPick }: { service: Service; onPick: 
               </div>
             </dl>
           </div>
-          <div aria-hidden className="relative h-0 border-t-2 border-dashed border-white/15">
-            <span className="absolute -left-3 -top-3 size-6 rounded-full bg-sun" />
-            <span className="absolute -right-3 -top-3 size-6 rounded-full bg-sun" />
-          </div>
-          <div className="p-6 sm:p-7">
+          <div className="dl-ticket-bottom relative -mt-px rounded-b-[28px] bg-foreground p-6 sm:p-7">
+            <span aria-hidden className="absolute inset-x-6 top-0 border-t-2 border-dashed border-white/15" />
             <Button asChild size="lg" className="h-13 w-full bg-sun text-[15px] text-foreground hover:bg-sun-deep">
               <a href={href} {...(hasForm ? { target: "_blank", rel: "noreferrer" } : {})}>
                 {hasForm ? b.open : b.emailBook}
