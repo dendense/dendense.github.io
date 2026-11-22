@@ -1,0 +1,11 @@
+node_modules
+dist
+.DS_Store
+.impeccable/questions
+.impeccable/review
+.impeccable/mocks
+.claude/settings.local.json
+.claude/
+.impeccable/config.local.json
+.impeccable/hook.cache.json
+*.tsbuildinfo

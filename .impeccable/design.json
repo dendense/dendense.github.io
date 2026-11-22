@@ -1,0 +1,525 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-22T14:24:08+00:00",
+  "title": "Design System: Denslab",
+  "extensions": {
+    "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "Gallery Gray",
+        "canonical": "#e3e3e6",
+        "cssVar": "--background",
+        "tonalRamp": [
+          "#424244",
+          "#6d6d6f",
+          "#98989a",
+          "#c3c3c6",
+          "#e3e3e6",
+          "#ebebee",
+          "#f2f2f4",
+          "#f9f9fa"
+        ]
+      },
+      "frame": {
+        "role": "neutral",
+        "displayName": "Frame White",
+        "canonical": "#f4f4f5",
+        "cssVar": "--surface",
+        "tonalRamp": [
+          "#464648",
+          "#747476",
+          "#a3a3a4",
+          "#d1d1d2",
+          "#f4f4f5",
+          "#f7f7f8",
+          "#fafafa",
+          "#fdfdfd"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Panel White",
+        "canonical": "#ffffff",
+        "cssVar": "--card",
+        "tonalRamp": [
+          "#49494a",
+          "#79797a",
+          "#aaaaab",
+          "#dbdbdb",
+          "#ffffff",
+          "#ffffff",
+          "#ffffff",
+          "#ffffff"
+        ]
+      },
+      "ink": {
+        "role": "primary",
+        "displayName": "Studio Ink",
+        "canonical": "#17171a",
+        "cssVar": "--foreground",
+        "tonalRamp": [
+          "#0f0f11",
+          "#111113",
+          "#131316",
+          "#151518",
+          "#17171a",
+          "#5d5d5f",
+          "#979798",
+          "#d1d1d1"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Muted",
+        "canonical": "#63636b",
+        "cssVar": "--muted-foreground",
+        "tonalRamp": [
+          "#222225",
+          "#333338",
+          "#45454a",
+          "#56565d",
+          "#63636b",
+          "#929297",
+          "#b9b9bc",
+          "#e0e0e1"
+        ]
+      },
+      "muted-fill": {
+        "role": "neutral",
+        "displayName": "Muted Fill",
+        "canonical": "#ededf0",
+        "cssVar": "--muted",
+        "tonalRamp": [
+          "#444446",
+          "#717174",
+          "#9e9ea1",
+          "#cbcbce",
+          "#ededf0",
+          "#f2f2f4",
+          "#f7f7f8",
+          "#fbfbfc"
+        ]
+      },
+      "secondary-fill": {
+        "role": "neutral",
+        "displayName": "Secondary Fill",
+        "canonical": "#ebebee",
+        "cssVar": "--secondary",
+        "tonalRamp": [
+          "#444446",
+          "#707073",
+          "#9d9da0",
+          "#cacacc",
+          "#ebebee",
+          "#f1f1f3",
+          "#f6f6f7",
+          "#fbfbfc"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#e4e4e8",
+        "cssVar": "--border",
+        "tonalRamp": [
+          "#424244",
+          "#6d6d70",
+          "#98989c",
+          "#c4c4c7",
+          "#e4e4e8",
+          "#ececef",
+          "#f3f3f5",
+          "#fafafa"
+        ]
+      },
+      "input-line": {
+        "role": "neutral",
+        "displayName": "Input Line",
+        "canonical": "#d6d6dc",
+        "cssVar": "--input",
+        "tonalRamp": [
+          "#3e3e42",
+          "#67676b",
+          "#8f8f94",
+          "#b8b8bd",
+          "#d6d6dc",
+          "#e2e2e6",
+          "#ededef",
+          "#f7f7f8"
+        ]
+      },
+      "sun": {
+        "role": "secondary",
+        "displayName": "Sun Yellow",
+        "canonical": "#ffdd33",
+        "cssVar": "--sun",
+        "tonalRamp": [
+          "#494017",
+          "#796a1f",
+          "#aa9426",
+          "#dbbe2d",
+          "#ffdd33",
+          "#ffe770",
+          "#fff0a3",
+          "#fff8d6"
+        ]
+      },
+      "sun-deep": {
+        "role": "secondary",
+        "displayName": "Deep Sun",
+        "canonical": "#f5c400",
+        "cssVar": "--sun-deep",
+        "tonalRamp": [
+          "#463a0a",
+          "#755f08",
+          "#a38405",
+          "#d2a802",
+          "#f5c400",
+          "#f8d64c",
+          "#fae48c",
+          "#fdf3cc"
+        ]
+      },
+      "flame": {
+        "role": "primary",
+        "displayName": "Flame Orange",
+        "canonical": "#f2541b",
+        "cssVar": "--flame",
+        "tonalRamp": [
+          "#461e11",
+          "#732c14",
+          "#a23b16",
+          "#d04919",
+          "#f2541b",
+          "#f6875f",
+          "#f9b298",
+          "#fcddd1"
+        ]
+      },
+      "flame-ink": {
+        "role": "tertiary",
+        "displayName": "Flame Ink",
+        "canonical": "#2a0b00",
+        "cssVar": "--flame-ink",
+        "tonalRamp": [
+          "#140c0a",
+          "#1a0c08",
+          "#200b05",
+          "#260b02",
+          "#2a0b00",
+          "#6a544c",
+          "#9f918c",
+          "#d4cecc"
+        ]
+      },
+      "sky": {
+        "role": "tertiary",
+        "displayName": "Periwinkle",
+        "canonical": "#8fb3f5",
+        "cssVar": "--sky",
+        "tonalRamp": [
+          "#2d3648",
+          "#475776",
+          "#6179a4",
+          "#7b9ad2",
+          "#8fb3f5",
+          "#b1caf8",
+          "#cdddfa",
+          "#e9f0fd"
+        ]
+      },
+      "sky-ink": {
+        "role": "tertiary",
+        "displayName": "Night Navy",
+        "canonical": "#0d1b3d",
+        "cssVar": "--soft-foreground",
+        "tonalRamp": [
+          "#0c101a",
+          "#0c1323",
+          "#0d162d",
+          "#0d1936",
+          "#0d1b3d",
+          "#565f77",
+          "#9298a8",
+          "#cfd1d8"
+        ]
+      },
+      "leaf": {
+        "role": "tertiary",
+        "displayName": "Olive Leaf",
+        "canonical": "#8c9a2c",
+        "cssVar": "--leaf",
+        "tonalRamp": [
+          "#2c3016",
+          "#464c1c",
+          "#5f6822",
+          "#798528",
+          "#8c9a2c",
+          "#aeb86b",
+          "#cbd2a0",
+          "#e8ebd5"
+        ]
+      },
+      "chart-blue": {
+        "role": "tertiary",
+        "displayName": "Chart Blue",
+        "canonical": "#6f96e8",
+        "cssVar": "--chart-3",
+        "tonalRamp": [
+          "#252e44",
+          "#394a70",
+          "#4c669c",
+          "#6081c7",
+          "#6f96e8",
+          "#9ab6ef",
+          "#bed0f5",
+          "#e2eafa"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display Light",
+        "purpose": "Hero lines 1-2 only."
+      },
+      "display-strong": {
+        "displayName": "Display Extra-bold",
+        "purpose": "Hero closing line; pairs with Display Light."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles (Process, Work, FAQ); booking and dashboard titles scale from it."
+      },
+      "title": {
+        "displayName": "Panel Title",
+        "purpose": "Panel headers and step names."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Hero and section intros in ink-muted, 36-52ch."
+      },
+      "body-sm": {
+        "displayName": "Body Small",
+        "purpose": "Panel and promo descriptions."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Chip captions, stepper counts, small links; sentence case."
+      }
+    },
+    "shadows": [
+      {
+        "name": "panel",
+        "value": "0 1px 2px rgb(23 23 26 / 0.04), 0 12px 30px -16px rgb(23 23 26 / 0.16)",
+        "purpose": "White panels, rail, nav pill, round white buttons."
+      },
+      {
+        "name": "raised",
+        "value": "0 2px 6px rgb(23 23 26 / 0.06), 0 22px 44px -18px rgb(23 23 26 / 0.3)",
+        "purpose": "Floating: mobile booking bar, booking ticket, paper props."
+      },
+      {
+        "name": "frame",
+        "value": "0 30px 80px -40px rgb(23 23 26 / 0.35)",
+        "purpose": "Console frame on the ground only."
+      },
+      {
+        "name": "sun-glow",
+        "value": "0 6px 14px -6px rgb(245 196 0 / 0.9)",
+        "purpose": "Active rail tab."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Default easing for swaps, progress and hover slides."
+      },
+      {
+        "name": "swap-in",
+        "value": "520ms ease-out-expo; translateY(18px) scale(0.96) blur(6px) to rest",
+        "purpose": "Stage mockup swap when the service changes."
+      },
+      {
+        "name": "copy-in",
+        "value": "380ms ease-out-expo; translateY(8px), fade",
+        "purpose": "Copy that follows a service or stage change."
+      },
+      {
+        "name": "equalizer",
+        "value": "1.4s cubic-bezier(0.45, 0, 0.55, 1) infinite, scaleY 0.4-1, staggered 140ms",
+        "purpose": "Hero stage equalizer bars."
+      },
+      {
+        "name": "press",
+        "value": "150ms ease-out; translateY(1px) or scale(0.95)",
+        "purpose": "Button press feedback."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation: none",
+        "purpose": "All dl-* animations stop under prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px",
+        "note": "Console grid, rail and nav appear; mobile booking bar hides."
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      },
+      {
+        "name": "frame-max",
+        "value": "1560px"
+      }
+    ],
+    "illustrativeOnly": {
+      "note": "Fictional client-brand colours used only inside example-work mockups; never Denslab UI.",
+      "colors": {
+        "kopi": "#5b3a29",
+        "krem": "#f3e6d3",
+        "karamel": "#c8894b",
+        "chili": "#c8281e",
+        "daun": "#3f7d3a",
+        "kraft": "#b98a5a",
+        "kraft-ink": "#2f4f3a"
+      }
+    }
+  },
+  "components": [
+    {
+      "name": "Ink Pill Button",
+      "kind": "button",
+      "refersTo": "button-ink-lg",
+      "description": "The primary action everywhere: booking and consultation CTAs.",
+      "html": "<button class=\"ds-btn-ink\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M6 3l14 9-14 9z\"/></svg>Book a consultation</button>",
+      "css": ".ds-btn-ink { font-family: var(--font-sans, 'Figtree Variable', Figtree, ui-sans-serif, system-ui, sans-serif); display:inline-flex; align-items:center; gap:8px; height:48px; padding:0 24px; border:0; border-radius:9999px; background:var(--foreground,#17171a); color:#fff; font-size:15px; font-weight:600; box-shadow: inset 0 1px 0 rgb(255 255 255/0.12), 0 1px 2px rgb(0 0 0/0.16); cursor:pointer; transition: background-color .15s ease-out, transform .15s ease-out; } .ds-btn-ink:hover { background: rgb(23 23 26/0.85); } .ds-btn-ink:focus-visible { outline:none; box-shadow: 0 0 0 2px #e3e3e6, 0 0 0 4px var(--flame,#f2541b); } .ds-btn-ink:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Round Icon Button",
+      "kind": "button",
+      "refersTo": "icon-button-round",
+      "description": "White circle beside the ink CTA; secondary navigation arrow.",
+      "html": "<button class=\"ds-btn-round\" aria-label=\"See services\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></button>",
+      "css": ".ds-btn-round { display:grid; place-items:center; width:48px; height:48px; border:0; border-radius:9999px; background:#fff; color:#17171a; box-shadow: 0 1px 2px rgb(23 23 26/0.04), 0 12px 30px -16px rgb(23 23 26/0.16); cursor:pointer; transition: transform .2s; } .ds-btn-round:hover { transform: translateY(-2px); } .ds-btn-round:focus-visible { outline:2px solid #f2541b; outline-offset:3px; }"
+    },
+    {
+      "name": "Service Chip",
+      "kind": "chip",
+      "refersTo": "service-chip",
+      "description": "Round service channel in its own colour; selected shows an ink ring.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" aria-pressed=\"true\"><span class=\"ds-chip-dot ds-sun\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M2 12h20\"/><path d=\"M12 2a15 15 0 0 1 0 20a15 15 0 0 1 0-20\"/></svg></span>Website</button><button class=\"ds-chip\" aria-pressed=\"false\"><span class=\"ds-chip-dot ds-sky\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M2 12h20\"/><path d=\"M12 2a15 15 0 0 1 0 20a15 15 0 0 1 0-20\"/></svg></span>Data</button></div>",
+      "css": ".ds-chips { display:flex; gap:12px; } .ds-chip { font-family: var(--font-sans, 'Figtree Variable', Figtree, ui-sans-serif, system-ui, sans-serif); display:flex; flex-direction:column; align-items:center; gap:8px; background:none; border:0; font-size:12px; font-weight:600; color:#17171a; cursor:pointer; } .ds-chip-dot { display:grid; place-items:center; width:48px; height:48px; border-radius:9999px; transition: transform .2s; } .ds-sun { background:#ffdd33; color:#17171a; } .ds-sky { background:#8fb3f5; color:#0d1b3d; } .ds-chip:hover .ds-chip-dot { transform: translateY(-2px); } .ds-chip[aria-pressed=true] .ds-chip-dot { box-shadow: 0 0 0 2px #fff, 0 0 0 4px #17171a; } .ds-chip:focus-visible { outline:2px solid #f2541b; outline-offset:3px; border-radius:16px; }"
+    },
+    {
+      "name": "Top Navigation",
+      "kind": "nav",
+      "refersTo": "nav-pill-active",
+      "description": "Pill nav with hairline separators; active link is a white shadowed pill.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-a is-on\" href=\"#\">Home</a><span class=\"ds-sep\"></span><a class=\"ds-nav-a\" href=\"#\">Services</a><span class=\"ds-sep\"></span><a class=\"ds-nav-a\" href=\"#\">Work</a></nav>",
+      "css": ".ds-nav { font-family: var(--font-sans, 'Figtree Variable', Figtree, ui-sans-serif, system-ui, sans-serif); display:flex; align-items:center; font-size:13px; background:#f4f4f5; padding:8px; border-radius:9999px; } .ds-sep { width:1px; height:12px; background:#d6d6dc; margin:0 8px; } .ds-nav-a { padding:8px 16px; border-radius:9999px; color:#63636b; text-decoration:none; transition: color .15s; } .ds-nav-a:hover { color:#17171a; } .ds-nav-a.is-on { background:#fff; color:#17171a; font-weight:600; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:6px; box-shadow: 0 1px 2px rgb(23 23 26/0.04), 0 12px 30px -16px rgb(23 23 26/0.16); } .ds-nav-a:focus-visible { outline:2px solid #f2541b; outline-offset:3px; }"
+    },
+    {
+      "name": "White Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Default information panel: 28px radius, ambient shadow, no border.",
+      "html": "<section class=\"ds-panel\"><h3>Services</h3><p><b>Website.</b> A fast site your customers can find and book from.</p></section>",
+      "css": ".ds-panel { font-family: var(--font-sans, 'Figtree Variable', Figtree, ui-sans-serif, system-ui, sans-serif); background:#fff; color:#17171a; border-radius:28px; padding:20px; max-width:340px; box-shadow: 0 1px 2px rgb(23 23 26/0.04), 0 12px 30px -16px rgb(23 23 26/0.16); } .ds-panel h3 { margin:0; font-size:17px; font-weight:700; letter-spacing:-0.025em; } .ds-panel p { margin:16px 0 0; padding-top:16px; border-top:1px solid #e4e4e8; font-size:13.5px; line-height:1.625; color:#63636b; } .ds-panel b { color:#17171a; }"
+    },
+    {
+      "name": "Flame Promo Panel",
+      "kind": "card",
+      "refersTo": "panel-flame",
+      "description": "Saturated promo field; title white, body in flame-ink, white round arrow.",
+      "html": "<section class=\"ds-flame\"><h3>Data automation for UMKM</h3><p>Swap paper notes for forms and a tidy dashboard.</p><button class=\"ds-flame-go\" aria-label=\"Open\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></button></section>",
+      "css": ".ds-flame { font-family: var(--font-sans, 'Figtree Variable', Figtree, ui-sans-serif, system-ui, sans-serif); background:#f2541b; color:#fff; border-radius:28px; padding:20px; max-width:340px; } .ds-flame h3 { margin:0; font-size:21px; font-weight:800; line-height:1.1; letter-spacing:-0.025em; } .ds-flame p { margin:8px 0 0; font-size:13.5px; font-weight:500; color:#2a0b00; } .ds-flame-go { margin-top:16px; display:grid; place-items:center; width:40px; height:40px; border:0; border-radius:9999px; background:#fff; color:#17171a; cursor:pointer; transition: transform .2s; } .ds-flame-go:hover { transform: translateX(2px); } .ds-flame-go:focus-visible { outline:2px solid #17171a; outline-offset:3px; }"
+    },
+    {
+      "name": "Now Playing Bar",
+      "kind": "custom",
+      "refersTo": "panel-ink",
+      "description": "Ink panel presenting a sample project as a playing track with stage progress.",
+      "html": "<section class=\"ds-np\"><div class=\"ds-np-tile\">3</div><div class=\"ds-np-body\"><b>Sample project</b><span>Design: first draft</span><div class=\"ds-np-track\"><i style=\"width:50%\"></i></div></div><button class=\"ds-np-play\" aria-label=\"Play\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M6 3l14 9-14 9z\"/></svg></button></section>",
+      "css": ".ds-np { font-family: var(--font-sans, 'Figtree Variable', Figtree, ui-sans-serif, system-ui, sans-serif); display:flex; align-items:center; gap:16px; background:#17171a; color:#fff; border-radius:28px; padding:20px; max-width:460px; } .ds-np-tile { display:grid; place-items:center; width:72px; height:72px; border-radius:16px; background:#ffdd33; color:#17171a; font-size:26px; font-weight:900; } .ds-np-body { flex:1; display:flex; flex-direction:column; gap:2px; font-size:15px; } .ds-np-body span { font-size:12.5px; color:rgb(255 255 255/0.65); } .ds-np-track { margin-top:10px; height:8px; border-radius:9999px; background:rgb(255 255 255/0.15); overflow:hidden; } .ds-np-track i { display:block; height:100%; border-radius:9999px; background:#f5c400; transition: width .5s cubic-bezier(0.16,1,0.3,1); } .ds-np-play { display:grid; place-items:center; width:44px; height:44px; border:0; border-radius:9999px; background:#fff; color:#17171a; cursor:pointer; } .ds-np-play:active { transform: scale(0.95); } .ds-np-play:focus-visible { outline:2px solid #f2541b; outline-offset:3px; }"
+    },
+    {
+      "name": "Language Toggle",
+      "kind": "custom",
+      "refersTo": "lang-toggle-active",
+      "description": "EN/ID radio pill; the active side fills sun.",
+      "html": "<div class=\"ds-lang\" role=\"radiogroup\"><button role=\"radio\" aria-checked=\"true\">en</button><button role=\"radio\" aria-checked=\"false\">id</button></div>",
+      "css": ".ds-lang { display:inline-flex; height:44px; align-items:center; padding:4px; border-radius:9999px; background:#fff; box-shadow: 0 1px 2px rgb(23 23 26/0.04), 0 12px 30px -16px rgb(23 23 26/0.16); } .ds-lang button { font-family: var(--font-sans, 'Figtree Variable', Figtree, ui-sans-serif, system-ui, sans-serif); height:36px; min-width:40px; padding:0 12px; border:0; border-radius:9999px; background:none; color:#63636b; font-size:12.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.025em; cursor:pointer; transition: color .2s, background-color .2s; } .ds-lang button:hover { color:#17171a; } .ds-lang button[aria-checked=true] { background:#ffdd33; color:#17171a; } .ds-lang button:focus-visible { outline:2px solid #f2541b; outline-offset:3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Studio Console",
+    "overview": "The page is one large console in the style of a music app. A pale frame sits on a light gray ground, and inside it white panels with big rounded corners hold the content. A few saturated fields own whole regions: a sun-yellow stage, an orange promo panel, an ink \"now playing\" bar and a periwinkle tile. The four services act as channels. A vertical icon rail, round chips and arrow steppers switch the stage between them, and the booking action follows whichever channel is active. The composition was pinned by the owner to a pair of \"Frogsound\" music-app reference images, and this build follows them.\n\nDensity is medium and bento-like. Panels sit close together with even 20 to 24px gaps, and each one contains a single idea. Colour is the loud part of the system. Type and form stay plain: one geometric sans (Figtree) with a strong contrast between light and extra-bold weights, and fully round pills, chips and play circles. The page draws no lines, grids or rules of its own. Panels are separated by fill and a soft ambient shadow.\n\nAll example work is an authored mockup labelled as an example (\"contoh\"). The client brands inside those mockups (coffee shop, chili sauce, kraft packaging) carry their own fictional palettes, and those palettes are not part of Denslab's UI.",
+    "keyCharacteristics": [
+      "Framed console: ground, then frame, then white panels, each step lighter and rounder.",
+      "Four saturated fields (sun, flame, ink, sky), each owning a whole region rather than appearing as small accents.",
+      "Light/extra-bold weight contrast within a single display line.",
+      "Everything clickable is round: pill buttons, circular chips, circular play and step controls.",
+      "Ink carries every action; flame orange is the one hot accent and the focus colour.",
+      "A music-player vocabulary (equalizer, now-playing bar, play/skip controls, \"01 / 04\" stepper) used to show how a project progresses."
+    ],
+    "rules": [
+      {
+        "name": "The Field Ownership Rule",
+        "body": "A saturated colour fills a whole region (a stage, a panel, a tile or a chip), not a thin border or a small badge. When a field is saturated, everything inside it is ink or white.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ink Acts Rule",
+        "body": "Every primary action is an ink pill. Flame is never used for a button fill; it marks focus and emphasis.",
+        "section": "colors"
+      },
+      {
+        "name": "The Client Palette Quarantine Rule",
+        "body": "Colours of the fictional client brands appear only inside mockup frames labelled as examples.",
+        "section": "colors"
+      },
+      {
+        "name": "The Weight Contrast Rule",
+        "body": "Display emphasis comes from swapping between weight 300 and weight 800 inside one line, never from colour, italics or gradient text.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sentence Case Rule",
+        "body": "Interface labels are sentence case. The language toggle (EN/ID) is the only uppercase-tracked UI text. Uppercase type inside mockups belongs to the fictional client brands.",
+        "section": "typography"
+      },
+      {
+        "name": "The Soft Lift Rule",
+        "body": "Shadows are diffuse and offset downward with negative spread. Hard offset shadows have no place in this world.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep the order ground, then frame, then white panel, with the radius growing at each step (28px, 32px, 36px).",
+      "Do give each saturated colour a whole region and keep the content inside it ink or white. Use flame-ink rather than white for body copy on flame.",
+      "Do make every primary action an ink pill, and let the booking link carry the active service.",
+      "Do set display lines with the 300/800 weight swap and -0.035em tracking.",
+      "Do label every mockup, sample project and demo number as an example.",
+      "Do show selection with a 2px ink ring and 2px offset, and focus with a 2px flame outline and 3px offset."
+    ],
+    "donts": [
+      "Don't use the fictional client colours (kopi, krem, karamel, chili, daun, kraft, kraft-ink) on any Denslab surface.",
+      "Don't fill a button with flame or sun. Flame is the hot accent and sun is a field, and actions belong to ink.",
+      "Don't add hard offset shadows, borders around panels, or square corners on controls.",
+      "Don't add a second typeface or gradient text. Hierarchy comes from Figtree's weights.",
+      "Don't put small uppercase tracked labels above headings; section heads are a headline and an intro."
+    ]
+  }
+}

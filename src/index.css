@@ -1,0 +1,139 @@
+@import "tailwindcss";
+@import "@fontsource-variable/figtree";
+@import "./styles/dens-ui.css";
+
+/* ==========================================================================
+   Denslab theme layer over Dens-UI.
+   Same token names as Dens-UI/shadcn; values re-tuned to the owner's
+   reference: sun yellow, flame orange, ink, periwinkle on light gray.
+   ========================================================================== */
+
+:root {
+  --radius: 1rem;
+
+  --background: #e3e3e6;
+  --foreground: #17171a;
+  --surface: #f4f4f5;
+  --card: #ffffff;
+  --card-foreground: #17171a;
+  --popover: #ffffff;
+  --popover-foreground: #17171a;
+
+  /* Ink carries actions, the way the reference's black pills do */
+  --brand: #17171a;
+  --brand-foreground: #ffffff;
+  --primary: #17171a;
+  --primary-foreground: #ffffff;
+
+  --secondary: #ebebee;
+  --secondary-foreground: #17171a;
+  --muted: #ededf0;
+  --muted-foreground: #63636b;
+  --accent: #f1f1f3;
+  --accent-foreground: #17171a;
+
+  /* Flame orange is the one hot accent */
+  --highlight: #f2541b;
+  --highlight-foreground: #1d0700;
+
+  /* Periwinkle for soft fills */
+  --soft: #8fb3f5;
+  --soft-foreground: #0d1b3d;
+
+  --border: #e4e4e8;
+  --input: #d6d6dc;
+  --ring: #f2541b;
+
+  /* Denslab-only roles */
+  --sun: #ffdd33;
+  --sun-deep: #f5c400;
+  --sun-foreground: #17171a;
+  --flame: #f2541b;
+  --flame-ink: #2a0b00;
+  --sky: #8fb3f5;
+  --leaf: #8c9a2c;
+
+  /* fictional client brands in the example work, never Denslab UI */
+  --kopi: #5b3a29;
+  --krem: #f3e6d3;
+  --karamel: #c8894b;
+  --chili: #c8281e;
+  --daun: #3f7d3a;
+  --kraft: #b98a5a;
+  --kraft-ink: #2f4f3a;
+
+  --chart-1: #f2541b;
+  --chart-2: #f5c400;
+  --chart-3: #6f96e8;
+  --chart-4: #17171a;
+  --chart-5: #8c9a2c;
+
+  --elevation-panel: 0 1px 2px rgb(23 23 26 / 0.04), 0 12px 30px -16px rgb(23 23 26 / 0.16);
+  --elevation-raised: 0 2px 6px rgb(23 23 26 / 0.06), 0 22px 44px -18px rgb(23 23 26 / 0.3);
+}
+
+@theme inline {
+  --color-sun: var(--sun);
+  --color-sun-deep: var(--sun-deep);
+  --color-sun-foreground: var(--sun-foreground);
+  --color-flame: var(--flame);
+  --color-flame-ink: var(--flame-ink);
+  --color-sky: var(--sky);
+  --color-leaf: var(--leaf);
+  --color-kopi: var(--kopi);
+  --color-krem: var(--krem);
+  --color-karamel: var(--karamel);
+  --color-chili: var(--chili);
+  --color-daun: var(--daun);
+  --color-kraft: var(--kraft);
+  --color-kraft-ink: var(--kraft-ink);
+  --radius-4xl: 2rem;
+  --radius-5xl: 2.25rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    caret-color: var(--flame);
+  }
+  ::selection {
+    background: var(--sun);
+    color: var(--foreground);
+  }
+  :focus-visible {
+    outline: 2px solid var(--flame);
+    outline-offset: 3px;
+  }
+}
+
+/* Equalizer bars in the hero card */
+@keyframes dl-eq {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1); }
+}
+.dl-eq > span {
+  transform-origin: center;
+  animation: dl-eq 1.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* Service swap: the outgoing mockup is gone, the incoming one rises in */
+@keyframes dl-swap-in {
+  from { opacity: 0; transform: translateY(18px) rotate(var(--tilt, 0deg)) scale(0.96); filter: blur(6px); }
+  to { opacity: 1; transform: translateY(0) rotate(var(--tilt, 0deg)) scale(1); filter: blur(0); }
+}
+.dl-swap {
+  animation: dl-swap-in 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes dl-copy-in {
+  from { opacity: 0; transform: translateY(8px); }
+}
+.dl-copy {
+  animation: dl-copy-in 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dl-eq > span { animation: none; }
+  .dl-swap, .dl-copy { animation: none; }
+}
